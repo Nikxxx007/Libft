@@ -1,6 +1,6 @@
 #include "libft.h"
 
-void	*memory_clean(char **new_str, int j)
+void	memory_clean(char **new_str, int j)
 {
 	int	i;
 
@@ -11,7 +11,6 @@ void	*memory_clean(char **new_str, int j)
 		i++;
 	}
 	free(new_str);
-	return (NULL);
 }
 
 void	add_letters(char *string, int len, int pos, const char *source)
@@ -43,9 +42,9 @@ void 	add_words(char const *str, char symb, char **new_str)
 		}
 		if (c_i_j[0] > 0)
 		{
-			new_str[c_i_j[2]] = (char *) malloc(sizeof(char) * c_i_j[0] + 1);
+			new_str[c_i_j[2]] = (char *)malloc(sizeof(char) * c_i_j[0] + 1);
 			if (!new_str[c_i_j[2]])
-				return ((void)memory_clean(new_str, c_i_j[2]));
+				return (memory_clean(new_str, c_i_j[2]));
 			add_letters(new_str[c_i_j[2]++], c_i_j[0], c_i_j[1], str);
 		}
 		c_i_j[0] = 0;
@@ -73,9 +72,7 @@ int	words_amount(char const *str, char c)
 char	**ft_split(char const *s, char c)
 {
 	char	**new_str;
-	int		i;
 
-	i = 0;
 	if (!s)
 		return (NULL);
 	new_str = (char **) malloc(sizeof(char *) * (words_amount(s, c) + 1));
